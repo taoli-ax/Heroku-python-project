@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% extends 'base.html' %}
+{% load static %}
+{% block page_content %}
+<h1>ships</h1>
+<div class="row">
+{% for ship in ships %}
+    <div class="col-md-4">
+        <div class="card mb-2">
+            <img class="card-img-top" src="{% static ship.image %}">
+            <div class="card-body">
+                <h5 class="card-title">{{ ship.name }}</h5>
+                <p class="card-text">{{ ship.description }}</p>
+                <a href="{% url 'ship_detail' ship.pk %}"
+                   class="btn btn-primary">
+                    read more
+                </a>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+</div>
+{% endblock %}
+</body>
+</html>
